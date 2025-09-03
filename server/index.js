@@ -47,6 +47,15 @@ app.use((req, res, next) => {
   next();
 });
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
+  });
+});
+
 // API routes
 app.use('/api/rsvp', rsvpRoutes);
 
@@ -80,9 +89,11 @@ mongoose.connect(process.env.MONGODB_URI, {
 })
 .then(() => {
   logger.info('Connected to MongoDB successfully');
+  logger.info(`Database: ${process.env.MONGODB_URI.split('/').pop()}`);
 })
 .catch((err) => {
   logger.error('MongoDB connection error:', err);
+  logger.error('MongoDB URI:', process.env.MONGODB_URI ? 'Set' : 'Not set');
   process.exit(1);
 });
 

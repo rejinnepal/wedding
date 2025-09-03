@@ -164,8 +164,14 @@ router.get('/', async (req, res) => {
 
   } catch (error) {
     logger.error('Error retrieving RSVPs:', error);
+    logger.error('Error details:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack
+    });
     res.status(500).json({
-      message: 'Error retrieving RSVP data'
+      message: 'Error retrieving RSVP data',
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Database error'
     });
   }
 });
