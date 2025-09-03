@@ -19,8 +19,21 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23D4A574" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23D4A574" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23D4A574" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="%23D4A574" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="%23D4A574" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
   z-index: 1;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.8) contrast(1.1);
+  transition: transform 0.3s ease;
+}
+
+.hero:hover .hero-image {
+  transform: scale(1.02);
 }
 
 .hero-overlay {
@@ -29,7 +42,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 240, 0.9) 0%, rgba(245, 230, 211, 0.9) 100%);
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 240, 0.85) 0%, 
+    rgba(245, 230, 211, 0.8) 50%,
+    rgba(212, 165, 116, 0.7) 100%
+  );
   z-index: 2;
 }
 
@@ -48,8 +66,8 @@
   backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: 3rem;
-  box-shadow: 0 20px 60px rgba(212, 165, 116, 0.2);
-  border: 1px solid rgba(212, 165, 116, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(212, 165, 116, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
 }
