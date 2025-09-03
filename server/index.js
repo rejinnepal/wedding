@@ -13,6 +13,9 @@ const rsvpRoutes = require('./routes/rsvp');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust proxy for Render deployment
+app.set('trust proxy', 1);
+
 // Security middleware
 app.use(helmet());
 app.use(cors());
@@ -21,7 +24,13 @@ app.use(compression());
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
+  max: 100, // limit each IP to 100 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => {
+    // Use X-Forwarded-For header when available, fallback to req.ip
+    return req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress;
+  }
 });
 app.use('/api/', limiter);
 
