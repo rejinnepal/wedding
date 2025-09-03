@@ -170,7 +170,7 @@ const TravelAccommodation = () => {
                     <div className="booking-row">
                       <div className="block-info">
                         <p><strong>Group Code:</strong> {hotel.blockCode}</p>
-                        <p><strong>Reserved until:</strong> October 15th, 2025</p>
+                        <p><strong>Reserved until:</strong> November 5th, 2025</p>
                       </div>
                       <a 
                         href={hotel.website} 
