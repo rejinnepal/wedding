@@ -1,0 +1,318 @@
+.home {
+  padding-top: 80px;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ivory) 0%, var(--light-rose) 100%);
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23D4A574" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23D4A574" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23D4A574" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="%23D4A574" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="%23D4A574" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 240, 0.9) 0%, rgba(245, 230, 211, 0.9) 100%);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Invitation Card */
+.invitation-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 20px 60px rgba(212, 165, 116, 0.2);
+  border: 1px solid rgba(212, 165, 116, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.invitation-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--dusty-rose), var(--gold));
+}
+
+.invitation-header h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--dusty-rose), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.invitation-divider {
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.invitation-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--dusty-rose), transparent);
+}
+
+.invitation-divider span {
+  background: white;
+  padding: 0 1rem;
+  color: var(--dusty-rose);
+  font-size: 1.5rem;
+}
+
+.invitation-text {
+  font-size: 1.3rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.invitation-details {
+  margin: 2rem 0;
+}
+
+.detail-item {
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(212, 165, 116, 0.1);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--dusty-rose);
+}
+
+.detail-item p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.rsvp-btn {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  padding: 15px 40px;
+}
+
+/* Countdown Section */
+.countdown-section {
+  background: linear-gradient(135deg, var(--white) 0%, var(--light-rose) 100%);
+  padding: 100px 0;
+}
+
+.countdown-content {
+  text-align: center;
+}
+
+.countdown-content h2 {
+  margin-bottom: 3rem;
+  font-size: 3rem;
+}
+
+.countdown-container {
+  margin: 3rem 0;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.countdown-item {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem 1rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(212, 165, 116, 0.15);
+  border: 1px solid rgba(212, 165, 116, 0.1);
+  text-align: center;
+}
+
+.countdown-number {
+  display: block;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--dusty-rose);
+  font-family: var(--font-body);
+  line-height: 1;
+}
+
+.countdown-label {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.countdown-complete {
+  text-align: center;
+  padding: 3rem;
+}
+
+.countdown-complete h2 {
+  font-size: 3rem;
+  color: var(--dusty-rose);
+  margin-bottom: 1rem;
+}
+
+.countdown-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* Quick Info Section */
+.quick-info {
+  background: var(--ivory);
+  padding: 80px 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(212, 165, 116, 0.1);
+  border: 1px solid rgba(212, 165, 116, 0.1);
+  transition: var(--transition);
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(212, 165, 116, 0.2);
+}
+
+.info-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.info-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--dusty-rose);
+}
+
+.info-card p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 1rem;
+  }
+
+  .invitation-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .invitation-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .invitation-text {
+    font-size: 1.1rem;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .countdown-number {
+    font-size: 2rem;
+  }
+
+  .countdown-content h2 {
+    font-size: 2rem;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .invitation-header h1 {
+    font-size: 2rem;
+  }
+
+  .invitation-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .countdown-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .countdown-item {
+    padding: 1.5rem 1rem;
+  }
+
+  .countdown-number {
+    font-size: 1.8rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card {
+    padding: 1.5rem;
+  }
+}

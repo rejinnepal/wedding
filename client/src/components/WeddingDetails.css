@@ -1,0 +1,489 @@
+.wedding-details {
+  padding-top: 80px;
+}
+
+/* Details Hero */
+.details-hero {
+  background: linear-gradient(135deg, var(--ivory) 0%, var(--light-rose) 100%);
+  padding: 120px 0 80px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--dusty-rose), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: var(--text-light);
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Events Section */
+.events-section {
+  background: var(--white);
+  padding: 100px 0;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.event-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(212, 165, 116, 0.15);
+  border: 1px solid rgba(212, 165, 116, 0.1);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(212, 165, 116, 0.25);
+}
+
+.mehendi-card {
+  border-left: 4px solid #FF6B6B;
+}
+
+.ceremony-card {
+  border-left: 4px solid var(--dusty-rose);
+}
+
+.reception-card {
+  border-left: 4px solid var(--gold);
+}
+
+.card-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.details-card h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--dusty-rose);
+}
+
+.detail-item {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--dusty-rose);
+  font-family: var(--font-body);
+}
+
+.detail-item p {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Map Section */
+.map-section {
+  background: var(--ivory);
+  padding: 100px 0;
+}
+
+.map-container {
+  text-align: center;
+}
+
+.map-container h2 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  color: var(--dusty-rose);
+}
+
+.map-wrapper {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(212, 165, 116, 0.15);
+  margin-bottom: 2rem;
+}
+
+.map-info {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(212, 165, 116, 0.1);
+}
+
+.map-info p {
+  margin: 0.5rem 0;
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+/* Dress Code Section */
+.dress-code-section {
+  background: var(--white);
+  padding: 100px 0;
+}
+
+.dress-code-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dress-code-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(212, 165, 116, 0.15);
+  border: 1px solid rgba(212, 165, 116, 0.1);
+  text-align: center;
+}
+
+.dress-code-card h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--dusty-rose);
+}
+
+.dress-code-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  font-family: var(--font-body);
+}
+
+.dress-code-card > p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.dress-suggestions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.suggestion {
+  text-align: left;
+  padding: 1.5rem;
+  background: rgba(212, 165, 116, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(212, 165, 116, 0.1);
+}
+
+.suggestion h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--dusty-rose);
+  font-family: var(--font-body);
+}
+
+.suggestion ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestion li {
+  padding: 0.5rem 0;
+  color: var(--text-light);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.suggestion li::before {
+  content: '♥';
+  position: absolute;
+  left: 0;
+  color: var(--dusty-rose);
+}
+
+/* Parking Section */
+.parking-section {
+  background: var(--ivory);
+  padding: 100px 0;
+}
+
+.parking-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.parking-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(212, 165, 116, 0.15);
+  border: 1px solid rgba(212, 165, 116, 0.1);
+  text-align: center;
+}
+
+.parking-card h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--dusty-rose);
+}
+
+.parking-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.parking-option {
+  text-align: left;
+  padding: 1.5rem;
+  background: rgba(212, 165, 116, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(212, 165, 116, 0.1);
+}
+
+.parking-option h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--dusty-rose);
+  font-family: var(--font-body);
+}
+
+.parking-option p {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Timeline Section */
+.timeline-section {
+  background: var(--white);
+  padding: 100px 0;
+}
+
+.timeline-content {
+  text-align: center;
+}
+
+.timeline-content h2 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  color: var(--dusty-rose);
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(212, 165, 116, 0.1);
+  border: 1px solid rgba(212, 165, 116, 0.1);
+  transition: var(--transition);
+}
+
+.timeline-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(212, 165, 116, 0.2);
+}
+
+.time {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--dusty-rose);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+}
+
+.event {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .details-card {
+    padding: 2rem;
+  }
+
+  .details-card h2 {
+    font-size: 2rem;
+  }
+
+  .card-icon {
+    font-size: 3rem;
+  }
+
+  .map-container h2 {
+    font-size: 2rem;
+  }
+
+  .dress-code-card {
+    padding: 2rem;
+  }
+
+  .dress-code-card h2 {
+    font-size: 2rem;
+  }
+
+  .dress-suggestions {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .parking-card {
+    padding: 2rem;
+  }
+
+  .parking-card h2 {
+    font-size: 2rem;
+  }
+
+  .parking-details {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .timeline-content h2 {
+    font-size: 2rem;
+  }
+
+  .timeline-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .timeline-item {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-hero {
+    padding: 100px 0 60px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .ceremony-section {
+    padding: 60px 0;
+  }
+
+  .details-card {
+    padding: 1.5rem;
+  }
+
+  .details-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+  }
+
+  .map-section {
+    padding: 60px 0;
+  }
+
+  .map-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .map-info {
+    padding: 1.5rem;
+  }
+
+  .dress-code-section {
+    padding: 60px 0;
+  }
+
+  .dress-code-card {
+    padding: 1.5rem;
+  }
+
+  .dress-code-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .suggestion {
+    padding: 1rem;
+  }
+
+  .parking-section {
+    padding: 60px 0;
+  }
+
+  .parking-card {
+    padding: 1.5rem;
+  }
+
+  .parking-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .parking-option {
+    padding: 1rem;
+  }
+
+  .timeline-section {
+    padding: 60px 0;
+  }
+
+  .timeline-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .timeline-item {
+    padding: 1rem;
+  }
+
+  .time {
+    font-size: 1.2rem;
+  }
+
+  .event {
+    font-size: 1rem;
+  }
+}
