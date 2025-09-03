@@ -21,7 +21,7 @@ const AdminView = () => {
   const fetchRSVPs = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('https://your-backend-server.com/api/rsvp');
+              const response = await axios.get('https://your-app-name.onrender.com/api/rsvp');
       setRsvps(response.data.rsvps);
       setSummary(response.data.summary);
     } catch (error) {
