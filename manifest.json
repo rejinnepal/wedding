@@ -1,0 +1,9 @@
+{
+  "short_name": "Wedding",
+  "name": "Abhishek & Richa's Wedding",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#D4A574",
+  "background_color": "#ffffff"
+}
