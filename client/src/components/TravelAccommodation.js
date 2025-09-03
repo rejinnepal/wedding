@@ -15,11 +15,12 @@ const TravelAccommodation = () => {
       price: '$$$',
       address: '235 Hoosick St, Troy, NY 12180',
       phone: '(518) 272-1700',
-      website: 'https://www.hilton.com/en/hotels/albhgi-hilton-garden-inn-troy/',
-      description: 'Our reception venue! Luxury hotel with excellent amenities and convenient location.',
+      website: 'https://www.hilton.com/en/attend-my-event/albtygi-dgw-f875676e-c462-4dd1-9d69-2448f91d9fda/',
+      description: 'Our reception venue! Special wedding rate: $129 for Saturday night',
       amenities: ['Free WiFi', 'Indoor Pool', 'Restaurant', 'Fitness Center', 'Free Parking'],
-      blockCode: 'ABHISHEKRICHA2025',
-      distance: 'Reception venue'
+      blockCode: 'Special Wedding Rate',
+      distance: 'Reception venue',
+      specialOffer: 'Saturday Nov 29: $129'
     },
     {
       name: 'Holiday Inn Express Albany',
@@ -159,20 +160,28 @@ const TravelAccommodation = () => {
                   </ul>
                 </div>
 
-                <div className="hotel-booking">
-                  <div className="block-info">
-                    <p><strong>Group Code:</strong> {hotel.blockCode}</p>
-                    <p><strong>Reserved until:</strong> May 15th, 2024</p>
+                                  <div className="hotel-booking">
+                    {hotel.specialOffer && (
+                      <div className="special-offer">
+                        <p><strong>🎉 Special Wedding Rate:</strong></p>
+                        <p className="offer-highlight">{hotel.specialOffer}</p>
+                      </div>
+                    )}
+                    <div className="booking-row">
+                      <div className="block-info">
+                        <p><strong>Group Code:</strong> {hotel.blockCode}</p>
+                        <p><strong>Reserved until:</strong> October 15th, 2025</p>
+                      </div>
+                      <a 
+                        href={hotel.website} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="btn booking-btn"
+                      >
+                        Book Now
+                      </a>
+                    </div>
                   </div>
-                  <a 
-                    href={hotel.website} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="btn booking-btn"
-                  >
-                    Book Now
-                  </a>
-                </div>
               </div>
             ))}
           </motion.div>
@@ -267,8 +276,8 @@ const TravelAccommodation = () => {
                 <h3>Contact</h3>
                 <p><strong>Wedding Coordinator:</strong></p>
                 <p>Abhishek & Richa</p>
-                <p>wedding@abhishekricha.com</p>
-                <p>(518) 555-0123</p>
+                <p>avighimire16@gmail.com</p>
+                <p>(334) 492-6455</p>
               </div>
             </div>
           </motion.div>

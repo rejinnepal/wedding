@@ -127,8 +127,15 @@ router.post('/', validateRSVP, async (req, res) => {
 
   } catch (error) {
     logger.error('Error submitting RSVP:', error);
+    logger.error('Error details:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack,
+      body: req.body
+    });
     res.status(500).json({
-      message: 'Something went wrong while submitting your RSVP. Please try again.'
+      message: 'Something went wrong while submitting your RSVP. Please try again.',
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Server error'
     });
   }
 });
