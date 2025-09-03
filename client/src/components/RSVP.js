@@ -28,7 +28,7 @@ const RSVP = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await axios.post('https://your-backend-domain.com/api/rsvp', data);
+      const response = await axios.post('https://your-backend-server.com/api/rsvp', data);
       
       toast.success(response.data.message);
       setIsSubmitted(true);

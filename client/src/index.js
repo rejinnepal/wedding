@@ -22,6 +22,6 @@ root.render(
           },
         }}
       />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
