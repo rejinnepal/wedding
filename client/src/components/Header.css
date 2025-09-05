@@ -31,6 +31,8 @@
   font-size: 1.8rem;
   color: var(--dusty-rose);
   transition: var(--transition);
+  font-family: var(--font-script);
+  font-weight: 400;
 }
 
 .logo:hover h2 {
@@ -63,6 +65,7 @@
   transition: var(--transition);
   padding: 0.5rem 0;
   position: relative;
+  font-family: var(--font-body);
 }
 
 .nav-link::after {

@@ -12,7 +12,7 @@ const TravelAccommodation = () => {
   const hotels = [
     {
       name: 'Hilton Garden Inn Troy',
-      price: '$$$',
+      // price: '$$$',
       address: '235 Hoosick St, Troy, NY 12180',
       phone: '(518) 272-1700',
       website: 'https://www.hilton.com/en/attend-my-event/albtygi-dgw-f875676e-c462-4dd1-9d69-2448f91d9fda/',
@@ -20,28 +20,28 @@ const TravelAccommodation = () => {
       amenities: ['Free WiFi', 'Indoor Pool', 'Restaurant', 'Fitness Center', 'Free Parking'],
       blockCode: 'Special Wedding Rate',
       distance: 'Reception venue',
-      specialOffer: 'Saturday Nov 29: $129'
+      specialOffer: 'Price Per Night: $129'
     },
     {
       name: 'Holiday Inn Express Albany',
-      price: '$$',
+      // price: '$$',
       address: '400 Old Loudon Rd, Latham, NY 12110',
       phone: '(518) 785-5555',
       website: 'https://www.ihg.com/holidayinnexpress/hotels/us/en/latham/albex/hoteldetail',
       description: 'Comfortable hotel with great amenities, located between Albany and Troy.',
       amenities: ['Free Breakfast', 'Free WiFi', 'Fitness Center', 'Business Center', 'Free Parking'],
-      blockCode: 'WEDDING2025',
+      // blockCode: 'WEDDING2025',
       distance: '15 minutes from temple, 10 minutes from reception'
     },
     {
       name: 'Best Western Plus Albany Airport Inn',
-      price: '$$',
+      // price: '$$',
       address: '200 Wolf Rd, Albany, NY 12205',
       phone: '(518) 458-1000',
       website: 'https://www.bestwestern.com/en_US/book/hotel-rooms.33001.html',
       description: 'Convenient location near Albany International Airport with comfortable rooms.',
       amenities: ['Free WiFi', 'Free Breakfast', 'Shuttle Service', 'Fitness Center'],
-      blockCode: 'ABHISHEKRICHA',
+      // blockCode: 'ABHISHEKRICHA',
       distance: '20 minutes from temple, 25 minutes from reception'
     }
   ];
@@ -89,7 +89,7 @@ const TravelAccommodation = () => {
           >
             <h1>Travel & Accommodation</h1>
             <p className="hero-subtitle">
-              Everything you need to know for your stay in Beautiful City
+              Everything you need to know for your stay in Troy
             </p>
           </motion.div>
         </div>
@@ -103,7 +103,7 @@ const TravelAccommodation = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2>Welcome to Beautiful City!</h2>
+            <h2>Welcome to Troy!</h2>
             <p>
               We're so excited to have you join us for our special day! Whether you're 
               traveling from near or far, we've put together some helpful information 
@@ -135,7 +135,7 @@ const TravelAccommodation = () => {
               <div key={index} className="hotel-card">
                 <div className="hotel-header">
                   <h3>{hotel.name}</h3>
-                  <span className="price-range">{hotel.price}</span>
+                  {/* <span className="price-range">{hotel.price}</span> */}
                 </div>
                 
                 <div className="hotel-info">
@@ -169,9 +169,11 @@ const TravelAccommodation = () => {
                     )}
                     <div className="booking-row">
                       <div className="block-info">
-                        <p><strong>Group Code:</strong> {hotel.blockCode}</p>
-                        <p><strong>Reserved until:</strong> November 5th, 2025</p>
-                      </div>
+                        {/* <p><strong>Group Code:</strong> {hotel.blockCode}</p> */}
+                        {hotel.name === "Hilton Garden Inn Troy" && (
+                          <p><strong>Reserved until:</strong> November 5th, 2025</p>
+                        )}
+                      </div> 
                       <a 
                         href={hotel.website} 
                         target="_blank" 
@@ -197,7 +199,7 @@ const TravelAccommodation = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <h2>Things to Do</h2>
-            <p>Explore Beautiful City while you're here</p>
+            <p>Explore Troy while you're here</p>
           </motion.div>
 
           <motion.div
@@ -262,19 +264,10 @@ const TravelAccommodation = () => {
                 <p><strong>Parking:</strong> Free at both venues</p>
               </div>
 
-              <div className="info-card">
-                <div className="info-icon">🌤️</div>
-                <h3>Weather</h3>
-                <p><strong>November Average:</strong> 45°F (7°C)</p>
-                <p><strong>Sunny days:</strong> 60% chance</p>
-                <p><strong>Rain chance:</strong> 40%</p>
-                <p><strong>Dress:</strong> Warm layers recommended</p>
-              </div>
 
               <div className="info-card">
                 <div className="info-icon">📞</div>
                 <h3>Contact</h3>
-                <p><strong>Wedding Coordinator:</strong></p>
                 <p>Abhishek & Richa</p>
                 <p>avighimire16@gmail.com</p>
                 <p>(334) 492-6455</p>

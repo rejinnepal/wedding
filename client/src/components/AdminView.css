@@ -367,3 +367,29 @@
     font-size: 0.8rem;
   }
 }
+
+/* Event Tags */
+.events-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.event-tag {
+  background: linear-gradient(135deg, var(--dusty-rose), var(--gold));
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .event-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+}

@@ -10,179 +10,157 @@ const Home = () => {
     threshold: 0.1
   });
 
-  // Wedding date - Set this to your actual wedding date
   const weddingDate = new Date('2025-11-30T11:00:00');
 
-  const countdownRenderer = ({ days, hours, minutes, seconds, completed }) => {
-    if (completed) {
-      return (
-        <div className="countdown-complete">
-          <h2>Today is the Day!</h2>
-          <p>We're getting married!</p>
-        </div>
-      );
-    }
-
-    return (
-      <div className="countdown-grid">
-        <div className="countdown-item">
-          <span className="countdown-number">{days}</span>
-          <span className="countdown-label">Days</span>
-        </div>
-        <div className="countdown-item">
-          <span className="countdown-number">{hours}</span>
-          <span className="countdown-label">Hours</span>
-        </div>
-        <div className="countdown-item">
-          <span className="countdown-number">{minutes}</span>
-          <span className="countdown-label">Minutes</span>
-        </div>
-        <div className="countdown-item">
-          <span className="countdown-number">{seconds}</span>
-          <span className="countdown-label">Seconds</span>
-        </div>
-      </div>
-    );
-  };
-
-  const scrollToRSVP = () => {
-    const rsvpSection = document.getElementById('rsvp-section');
-    if (rsvpSection) {
-      rsvpSection.scrollIntoView({ behavior: 'smooth' });
+  const scrollToStory = () => {
+    const storySection = document.getElementById('our-story');
+    if (storySection) {
+      storySection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <div className="home">
-      {/* Hero Section */}
+      {/* Hero Section - Reference Design */}
       <section className="hero">
         <div className="hero-background">
           <img 
-            src="/assets/IMG_6691_Original.JPG" 
+            src={`${process.env.PUBLIC_URL}/assets/IMG_6691_Original.JPG`}
             alt="Abhishek & Richa - Wedding Couple" 
             className="hero-image"
           />
           <div className="hero-overlay"></div>
         </div>
         
-        <div className="container">
+        <div className="hero-content">
           <motion.div 
-            className="hero-content"
-            initial={{ opacity: 0, y: 50 }}
+            className="main-content"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className="invitation-card">
-              <motion.div
-                className="invitation-header"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                <h1>Abhishek & Richa</h1>
-                <div className="invitation-divider">
-                  <span>♥</span>
-                </div>
-                <p className="invitation-text">
-                  Cordially invite you to celebrate their wedding
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="invitation-details"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
-                <div className="detail-item">
-                  <h3>Sunday, November 30th, 2025</h3>
-                  <p>Eleven o'clock in the morning</p>
-                </div>
-                
-                <div className="detail-item">
-                  <h3>Hindu Temple Society</h3>
-                  <p>450 Albany Shaker Rd, Albany, NY 12211</p>
-                </div>
-
-                <div className="detail-item">
-                  <h3>Reception to Follow</h3>
-                  <p>Hilton Garden Inn Troy, 235 Hoosick St, Troy, NY 12180</p>
-                </div>
-              </motion.div>
-
-              <motion.button
-                className="btn rsvp-btn"
-                onClick={scrollToRSVP}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.2 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                RSVP Now
-              </motion.button>
-            </div>
+            {/* Couple Names */}
+            <motion.h1 
+              className="couple-names"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Abhishek & Richa
+            </motion.h1>
+            
+            {/* Wedding Announcement */}
+            <motion.div 
+              className="wedding-announcement"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <h2 className="announcement-text">We are getting married</h2>
+              <h3 className="wedding-date">30 November 2025</h3>
+            </motion.div>
+            
+            {/* Call to Action */}
+            <motion.button 
+              className="explore-button"
+              onClick={scrollToStory}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Explore Our Story
+            </motion.button>
           </motion.div>
         </div>
       </section>
 
       {/* Countdown Section */}
-      <section className="countdown-section" ref={ref}>
-        <div className="container">
-          <motion.div
-            className="countdown-content"
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <h2>Counting Down to Our Special Day</h2>
-            <div className="countdown-container">
-              <Countdown
-                date={weddingDate}
-                renderer={countdownRenderer}
-              />
-            </div>
-            <p className="countdown-subtitle">
-              We can't wait to celebrate with you!
-            </p>
-          </motion.div>
-        </div>
+      <section className="countdown-section">
+        <motion.div 
+          className="countdown-container"
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="countdown-title">Counting Down to Our Special Day</h2>
+          <div className="countdown-timer">
+            <Countdown 
+              date={weddingDate}
+              renderer={({ days, hours, minutes, seconds, completed }) => {
+                if (completed) {
+                  return <div className="wedding-day">Today is the day! 🎉</div>;
+                }
+                return (
+                  <div className="countdown-grid">
+                    <div className="countdown-item">
+                      <div className="countdown-number">{days}</div>
+                      <div className="countdown-label">Days</div>
+                    </div>
+                    <div className="countdown-item">
+                      <div className="countdown-number">{hours}</div>
+                      <div className="countdown-label">Hours</div>
+                    </div>
+                    <div className="countdown-item">
+                      <div className="countdown-number">{minutes}</div>
+                      <div className="countdown-label">Minutes</div>
+                    </div>
+                    <div className="countdown-item">
+                      <div className="countdown-number">{seconds}</div>
+                      <div className="countdown-label">Seconds</div>
+                    </div>
+                  </div>
+                );
+              }}
+            />
+          </div>
+        </motion.div>
       </section>
 
-      {/* Quick Info Section */}
-      <section className="quick-info">
-        <div className="container">
-          <motion.div
-            className="info-grid"
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+      {/* Quick Info Cards */}
+      <section className="quick-info-section">
+        <motion.div 
+          className="info-cards-container"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          {/* Event Cards Row */}
+          <div className="events-row">
             <div className="info-card">
-              <div className="info-icon">📅</div>
-              <h3>Date & Time</h3>
-              <p>November 30th, 2025<br />11:00 AM</p>
+              <div className="card-icon">🎨</div>
+              <h3>Mehendi</h3>
+              <p>Saturday, November 29th, 2025</p>
+              <p className="card-detail">1:00 PM - 4:00 PM at Sugar Hills Apartment</p>
             </div>
             
             <div className="info-card">
-              <div className="info-icon">📍</div>
-              <h3>Venue</h3>
-              <p>Hindu Temple Society<br />Albany, NY</p>
+              <div className="card-icon">💒</div>
+              <h3>Ceremony</h3>
+              <p>Sunday, November 30th, 2025</p>
+              <p className="card-detail">1:00 PM - 4:00 PM at Hindu Temple Society</p>
             </div>
             
             <div className="info-card">
-              <div className="info-icon">👗</div>
-              <h3>Dress Code</h3>
-              <p>Traditional Indian<br />or Formal Attire</p>
+              <div className="card-icon">🎉</div>
+              <h3>Reception</h3>
+              <p>Sunday, November 30th, 2025</p>
+              <p className="card-detail">6:00 PM - 11:00 PM at Hilton Garden Inn Troy</p>
             </div>
-            
-            <div className="info-card">
-              <div className="info-icon">💝</div>
+          </div>
+          
+          {/* RSVP Card - Full Width */}
+          <div className="rsvp-row">
+            <div className="info-card rsvp-card">
+              <div className="card-icon">💝</div>
               <h3>RSVP</h3>
-              <p>Please respond by<br />November 15th, 2025</p>
+              <p>Please respond by</p>
+              <p className="card-detail">September 30th, 2025</p>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </section>
     </div>
   );

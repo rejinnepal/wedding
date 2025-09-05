@@ -22,6 +22,14 @@ const validateRSVP = [
   body('attending')
     .isIn(['Yes', 'No'])
     .withMessage('Please select a valid attendance option'),
+  body('eventsAttending')
+    .if(body('attending').equals('Yes'))
+    .isArray({ min: 1 })
+    .withMessage('Please select at least one event'),
+  body('eventsAttending.*')
+    .if(body('attending').equals('Yes'))
+    .isIn(['Mehendi', 'Wedding', 'Reception'])
+    .withMessage('Please select valid events'),
   body('numberOfGuests')
     .if(body('attending').equals('Yes'))
     .isInt({ min: 1, max: 5 })
@@ -72,6 +80,7 @@ router.post('/', validateRSVP, async (req, res) => {
       email, 
       phoneNumber, 
       attending, 
+      eventsAttending,
       numberOfGuests, 
       mealPreference, 
       arrivalDate, 
@@ -102,6 +111,7 @@ router.post('/', validateRSVP, async (req, res) => {
 
     // Only include additional fields if attending
     if (attending === 'Yes') {
+      rsvpData.eventsAttending = eventsAttending;
       rsvpData.numberOfGuests = numberOfGuests;
       rsvpData.mealPreference = mealPreference;
       rsvpData.arrivalDate = arrivalDate;

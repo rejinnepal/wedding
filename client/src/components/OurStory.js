@@ -12,38 +12,45 @@ const OurStory = () => {
   const timelineEvents = [
     {
       id: 1,
-      date: 'March 15, 2022',
-      title: 'First Meeting',
-      description: 'We met at a mutual friend\'s Diwali celebration. Abhishek was immediately drawn to Richa\'s beautiful smile and kind heart. What started as a simple conversation about our shared love for Indian culture turned into hours of talking about life, dreams, and everything in between.',
-      image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
+      date: '2013',
+      title: 'High School Sweethearts',
+      description: 'Our story began in 2013, in the quiet halls of high school. Richa, shy and focused on her studies, never expected her life to change when Abhishek gathered the courage to propose. With his persistence and a heart full of hope, she eventually said yes — and from that moment, a beautiful journey began, one that grew quietly, like a secret only the two of us shared.',
+      image: `${process.env.PUBLIC_URL}/assets/IMG_20170707_024226_050.jpg`
     },
     {
       id: 2,
-      date: 'June 20, 2022',
-      title: 'First Date',
-      description: 'Our first official date was a magical evening at an authentic Indian restaurant. We shared our favorite dishes, talked about our families, and discovered our shared passion for travel and adventure. The chemistry between us was undeniable.',
-      image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
+      date: '2016-2017',
+      title: 'Crossing Continents',
+      description: 'Life took us across continents. In 2016, Abhishek came to the U.S. for his studies, and in 2017, Richa followed. From then until 2022, we lived in a long-distance rhythm, cherishing summers and spring breaks when we could reunite. It wasn\'t easy, but the distance only deepened our love and taught us the true meaning of patience, faith, and commitment.',
+      image: `${process.env.PUBLIC_URL}/assets/IMG_20191223_175606.jpg`
     },
     {
       id: 3,
-      date: 'December 25, 2023',
-      title: 'Moving In Together',
-      description: 'After a year and a half of dating, we decided to take the next big step and move in together. It was the perfect Christmas gift to ourselves. Our new home became a place filled with love, laughter, and countless memories.',
-      image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
+      date: 'March 15, 2022',
+      title: 'The Proposal',
+      description: 'On March 15, 2022, Abhishek asked the question once more — this time with a ring — and Richa said "Yes, of course!" Just two months later, she moved from Boston to Troy, choosing love and togetherness after years apart.',
+      image: `${process.env.PUBLIC_URL}/assets/IMG_6691_Original.JPG`
     },
     {
       id: 4,
-      date: 'August 10, 2024',
-      title: 'The Proposal',
-      description: 'Abhishek planned the most romantic proposal during our vacation in India. He got down on one knee at the Taj Mahal at sunset, with the magnificent monument as our backdrop. Richa said "Yes!" without hesitation, and we celebrated our engagement with our families.',
-      image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
+      date: '2022-2025',
+      title: 'Adventures Together',
+      description: 'Since then, life has been a new adventure. Our first trip was to Niagara Falls, a place that will forever symbolize our first chapter living together. Soon after, we discovered our love for the outdoors and became "National Park junkies," traveling to six parks so far with many more to come.',
+      image: `${process.env.PUBLIC_URL}/assets/PXL_20230610_160807595.MP~2.jpeg`
     },
     {
       id: 5,
+      date: 'October 2022 & April 2025',
+      title: 'Our Little Family',
+      description: 'Our little family grew too — with Luna, our sweet girl, in October 2022, and Mango, our playful boy, in April 2025. They\'ve filled our lives with laughter, warmth, and love.',
+      image: `${process.env.PUBLIC_URL}/assets/PXL_20231221_222540392.MP~2.jpeg`
+    },
+    {
+      id: 6,
       date: 'November 30, 2025',
       title: 'Our Wedding Day',
-      description: 'The day we\'ve been dreaming of is finally here! We can\'t wait to celebrate our love with all of our family and friends in a beautiful traditional Indian wedding ceremony. This is just the beginning of our forever together.',
-      image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
+      description: 'Through every chapter — graduations, careers, adventures, challenges — the greatest gift has been each other. From high school sweethearts to life partners, we are endlessly grateful to have found love so early, to have grown together, and to continue writing this story hand in hand.',
+      image: `${process.env.PUBLIC_URL}/assets/PXL_20250830_182855816.jpeg`
     }
   ];
 

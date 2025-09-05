@@ -153,6 +153,7 @@ const AdminView = () => {
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Attending</th>
+                        <th>Events</th>
                         <th>Guests</th>
                         <th>Meal</th>
                         <th>Arrival</th>
@@ -173,6 +174,19 @@ const AdminView = () => {
                             <span className={`status ${rsvp.attending === 'Yes' ? 'attending' : 'declined'}`}>
                               {rsvp.attending}
                             </span>
+                          </td>
+                          <td>
+                            {rsvp.eventsAttending && rsvp.eventsAttending.length > 0 ? (
+                              <div className="events-list">
+                                {rsvp.eventsAttending.map((event, index) => (
+                                  <span key={index} className="event-tag">
+                                    {event}
+                                  </span>
+                                ))}
+                              </div>
+                            ) : (
+                              '-'
+                            )}
                           </td>
                           <td>{rsvp.numberOfGuests || '-'}</td>
                           <td>{rsvp.mealPreference || '-'}</td>

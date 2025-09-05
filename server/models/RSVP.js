@@ -26,6 +26,19 @@ const rsvpSchema = new mongoose.Schema({
     enum: ['Yes', 'No'],
     default: 'Yes'
   },
+  eventsAttending: {
+    type: [String],
+    enum: ['Mehendi', 'Wedding', 'Reception'],
+    required: function() {
+      return this.attending === 'Yes';
+    },
+    validate: {
+      validator: function(v) {
+        return v.length > 0;
+      },
+      message: 'Please select at least one event'
+    }
+  },
   numberOfGuests: {
     type: Number,
     min: [1, 'Number of guests must be at least 1'],

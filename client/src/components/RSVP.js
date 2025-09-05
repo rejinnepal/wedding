@@ -199,6 +199,58 @@ const RSVP = () => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                 >
+                  <label>Which events will you attend? *</label>
+                  <div className="checkbox-group">
+                    <label className="checkbox-option">
+                      <input
+                        type="checkbox"
+                        value="Mehendi"
+                        {...register('eventsAttending', {
+                          required: 'Please select at least one event'
+                        })}
+                      />
+                      <span className="checkbox-custom"></span>
+                      <span className="checkbox-label">Mehendi (Nov 29, 1-4 PM)</span>
+                    </label>
+                    
+                    <label className="checkbox-option">
+                      <input
+                        type="checkbox"
+                        value="Wedding"
+                        {...register('eventsAttending', {
+                          required: 'Please select at least one event'
+                        })}
+                      />
+                      <span className="checkbox-custom"></span>
+                      <span className="checkbox-label">Wedding Ceremony (Nov 30, 1-4 PM)</span>
+                    </label>
+                    
+                    <label className="checkbox-option">
+                      <input
+                        type="checkbox"
+                        value="Reception"
+                        {...register('eventsAttending', {
+                          required: 'Please select at least one event'
+                        })}
+                      />
+                      <span className="checkbox-custom"></span>
+                      <span className="checkbox-label">Reception (Nov 30, 6-11 PM)</span>
+                    </label>
+                  </div>
+                  {errors.eventsAttending && (
+                    <span className="error-message">{errors.eventsAttending.message}</span>
+                  )}
+                </motion.div>
+              )}
+
+              {attending === 'Yes' && (
+                <motion.div
+                  className="form-group"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <label htmlFor="numberOfGuests">How many people (including you) are attending? *</label>
                   <select
                     id="numberOfGuests"
@@ -302,7 +354,7 @@ const RSVP = () => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <label htmlFor="travelMethod">How will you be coming? *</label>
+                  <label htmlFor="travelMethod">How will you be arriving? *</label>
                   <select
                     id="travelMethod"
                     {...register('travelMethod', {
