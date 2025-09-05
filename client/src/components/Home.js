@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useNavigate } from 'react-router-dom';
 import Countdown from 'react-countdown';
 import './Home.css';
 
 const Home = () => {
+  const navigate = useNavigate();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -12,11 +14,8 @@ const Home = () => {
 
   const weddingDate = new Date('2025-11-30T11:00:00');
 
-  const scrollToStory = () => {
-    const storySection = document.getElementById('our-story');
-    if (storySection) {
-      storySection.scrollIntoView({ behavior: 'smooth' });
-    }
+  const navigateToStory = () => {
+    navigate('/our-story');
   };
 
   return (
@@ -63,7 +62,7 @@ const Home = () => {
             {/* Call to Action */}
             <motion.button 
               className="explore-button"
-              onClick={scrollToStory}
+              onClick={navigateToStory}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -137,7 +136,7 @@ const Home = () => {
             </div>
             
             <div className="info-card">
-              <div className="card-icon">💒</div>
+              <div className="card-icon">🛕</div>
               <h3>Ceremony</h3>
               <p>Sunday, November 30th, 2025</p>
               <p className="card-detail">1:00 PM - 4:00 PM at Hindu Temple Society</p>

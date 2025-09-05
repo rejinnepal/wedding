@@ -2,7 +2,7 @@
 .wedding-details {
   font-family: var(--font-body);
   color: var(--text-dark);
-  padding-top: 80px;
+  padding-top: 0;
 }
 
 /* Hero Section */
@@ -321,46 +321,73 @@
   position: relative;
 }
 
-.timeline-container::before {
+.timeline-day {
+  margin-bottom: 60px;
+}
+
+.timeline-day:last-child {
+  margin-bottom: 0;
+}
+
+.day-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--dusty-rose);
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 600;
+  position: relative;
+}
+
+.day-title::after {
   content: '';
   position: absolute;
+  bottom: -10px;
   left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--gold);
   transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
   border-radius: 2px;
 }
 
 .timeline-item {
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   position: relative;
-}
-
-.timeline-item:nth-child(odd) {
-  flex-direction: row;
-}
-
-.timeline-item:nth-child(even) {
-  flex-direction: row-reverse;
+  padding-left: 80px;
 }
 
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: 50%;
+  left: 0;
   top: 50%;
-  width: 16px;
-  height: 16px;
-  background: #4A90E2;
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
   border: 3px solid var(--white);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
   z-index: 2;
-  box-shadow: 0 0 0 3px #4A90E2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  width: 2px;
+  height: calc(100% + 30px);
+  background: var(--gold);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.timeline-item:last-child::after {
+  display: none;
 }
 
 .timeline-time {
@@ -375,6 +402,7 @@
   border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
 }
 
 .timeline-event {
@@ -384,8 +412,6 @@
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 0 30px;
-  max-width: 300px;
 }
 
 .timeline-event h4 {
@@ -427,30 +453,39 @@
   }
   
   
-  .timeline-container::before {
-    left: 30px;
+  .timeline-container {
+    padding: 0 20px;
+  }
+  
+  .day-title {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
   }
   
   .timeline-item {
-    flex-direction: column !important;
+    flex-direction: column;
     align-items: flex-start;
     padding-left: 60px;
+    margin-bottom: 25px;
   }
   
   .timeline-item::before {
-    left: 30px;
+    left: 0;
+  }
+  
+  .timeline-item::after {
+    left: 5px;
+    height: calc(100% + 25px);
   }
   
   .timeline-time {
-    flex: none;
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
     width: 100%;
+    flex: none;
   }
   
   .timeline-event {
-    margin: 0;
     width: 100%;
-    max-width: none;
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -6,6 +6,7 @@ import './AdminView.css';
 
 const AdminView = () => {
   const [rsvps, setRsvps] = useState([]);
+  const [filteredRsvps, setFilteredRsvps] = useState([]);
   const [summary, setSummary] = useState({
     totalRSVPs: 0,
     attendingCount: 0,
@@ -13,6 +14,25 @@ const AdminView = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+  // Filter states
+  const [filters, setFilters] = useState({
+    searchName: '',
+    searchEmail: '',
+    events: {
+      Mehendi: false,
+      Wedding: false,
+      Reception: false
+    },
+    mealPreference: '',
+    travelMethod: '',
+    arrivalDateFrom: '',
+    arrivalDateTo: '',
+    guestCount: '',
+    attending: '',
+    hasAllergies: '',
+    hasSongRequest: ''
+  });
 
   useEffect(() => {
     fetchRSVPs();
@@ -31,6 +51,149 @@ const AdminView = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const applyFilters = useCallback(() => {
+    let filtered = [...rsvps];
+
+    // Filter by name search
+    if (filters.searchName) {
+      filtered = filtered.filter(rsvp => 
+        rsvp.fullName.toLowerCase().includes(filters.searchName.toLowerCase())
+      );
+    }
+
+    // Filter by email search
+    if (filters.searchEmail) {
+      filtered = filtered.filter(rsvp => 
+        rsvp.email.toLowerCase().includes(filters.searchEmail.toLowerCase())
+      );
+    }
+
+    // Filter by events
+    const selectedEvents = Object.keys(filters.events).filter(event => filters.events[event]);
+    if (selectedEvents.length > 0) {
+      filtered = filtered.filter(rsvp => {
+        if (!rsvp.eventsAttending || rsvp.eventsAttending.length === 0) return false;
+        // Use AND logic: RSVP must have ALL selected events
+        return selectedEvents.every(event => rsvp.eventsAttending.includes(event));
+      });
+    }
+
+    // Filter by meal preference
+    if (filters.mealPreference) {
+      filtered = filtered.filter(rsvp => rsvp.mealPreference === filters.mealPreference);
+    }
+
+    // Filter by travel method
+    if (filters.travelMethod) {
+      filtered = filtered.filter(rsvp => rsvp.travelMethod === filters.travelMethod);
+    }
+
+    // Filter by guest count
+    if (filters.guestCount) {
+      const guestCountFilter = parseInt(filters.guestCount);
+      filtered = filtered.filter(rsvp => {
+        // Handle both string and number types
+        const rsvpGuestCount = typeof rsvp.numberOfGuests === 'string' 
+          ? parseInt(rsvp.numberOfGuests) 
+          : rsvp.numberOfGuests;
+        return rsvpGuestCount === guestCountFilter;
+      });
+    }
+
+    // Filter by attending status
+    if (filters.attending) {
+      filtered = filtered.filter(rsvp => rsvp.attending === filters.attending);
+    }
+
+    // Filter by arrival date range
+    if (filters.arrivalDateFrom) {
+      // Create date at start of day in local timezone
+      const fromDate = new Date(filters.arrivalDateFrom + 'T00:00:00');
+      filtered = filtered.filter(rsvp => {
+        if (!rsvp.arrivalDate) return false;
+        const rsvpDate = new Date(rsvp.arrivalDate);
+        // Compare dates by setting time to start of day
+        const rsvpDateStart = new Date(rsvpDate.getFullYear(), rsvpDate.getMonth(), rsvpDate.getDate());
+        const fromDateStart = new Date(fromDate.getFullYear(), fromDate.getMonth(), fromDate.getDate());
+        return rsvpDateStart >= fromDateStart;
+      });
+    }
+
+    if (filters.arrivalDateTo) {
+      // Create date at end of day in local timezone
+      const toDate = new Date(filters.arrivalDateTo + 'T23:59:59');
+      filtered = filtered.filter(rsvp => {
+        if (!rsvp.arrivalDate) return false;
+        const rsvpDate = new Date(rsvp.arrivalDate);
+        // Compare dates by setting time to start of day
+        const rsvpDateStart = new Date(rsvpDate.getFullYear(), rsvpDate.getMonth(), rsvpDate.getDate());
+        const toDateStart = new Date(toDate.getFullYear(), toDate.getMonth(), toDate.getDate());
+        return rsvpDateStart <= toDateStart;
+      });
+    }
+
+    // Filter by allergies
+    if (filters.hasAllergies) {
+      if (filters.hasAllergies === 'Yes') {
+        filtered = filtered.filter(rsvp => rsvp.allergies && rsvp.allergies.trim() !== '');
+      } else if (filters.hasAllergies === 'No') {
+        filtered = filtered.filter(rsvp => !rsvp.allergies || rsvp.allergies.trim() === '');
+      }
+    }
+
+    // Filter by song request
+    if (filters.hasSongRequest) {
+      if (filters.hasSongRequest === 'Yes') {
+        filtered = filtered.filter(rsvp => rsvp.songRequest && rsvp.songRequest.trim() !== '');
+      } else if (filters.hasSongRequest === 'No') {
+        filtered = filtered.filter(rsvp => !rsvp.songRequest || rsvp.songRequest.trim() === '');
+      }
+    }
+
+    setFilteredRsvps(filtered);
+  }, [rsvps, filters]);
+
+  useEffect(() => {
+    applyFilters();
+  }, [applyFilters]);
+
+  const handleFilterChange = (filterType, value) => {
+    setFilters(prev => ({
+      ...prev,
+      [filterType]: value
+    }));
+  };
+
+  const handleEventFilterChange = (event) => {
+    setFilters(prev => ({
+      ...prev,
+      events: {
+        ...prev.events,
+        [event]: !prev.events[event]
+      }
+    }));
+  };
+
+  const clearFilters = () => {
+    setFilters({
+      searchName: '',
+      searchEmail: '',
+      events: {
+        Mehendi: false,
+        Wedding: false,
+        Reception: false
+      },
+      mealPreference: '',
+      travelMethod: '',
+      arrivalDateFrom: '',
+      arrivalDateTo: '',
+      guestCount: '',
+      attending: '',
+      hasAllergies: '',
+      hasSongRequest: ''
+    });
   };
 
   const formatDate = (dateString) => {
@@ -125,6 +288,201 @@ const AdminView = () => {
         </div>
       </section>
 
+      <section className="filters-section">
+        <div className="container">
+          <motion.div
+            className="filters-container"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="filters-header">
+              <h2>Filter RSVPs</h2>
+              <button className="btn clear-filters-btn" onClick={clearFilters}>
+                Clear All Filters
+              </button>
+            </div>
+
+            {/* Search Filters Row */}
+            <div className="filters-row search-filters">
+              <div className="filter-group">
+                <label>Search by Name</label>
+                <input
+                  type="text"
+                  value={filters.searchName}
+                  onChange={(e) => handleFilterChange('searchName', e.target.value)}
+                  placeholder="Enter name to search..."
+                />
+              </div>
+              <div className="filter-group">
+                <label>Search by Email</label>
+                <input
+                  type="text"
+                  value={filters.searchEmail}
+                  onChange={(e) => handleFilterChange('searchEmail', e.target.value)}
+                  placeholder="Enter email to search..."
+                />
+              </div>
+            </div>
+
+            {/* Main Filters Grid */}
+            <div className="filters-grid">
+              {/* Events Filter */}
+              <div className="filter-group events-filter">
+                <label>Events Attending</label>
+                <div className="checkbox-filters">
+                  <label className="filter-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={filters.events.Mehendi}
+                      onChange={() => handleEventFilterChange('Mehendi')}
+                    />
+                    <span className="checkmark"></span>
+                    Mehendi
+                  </label>
+                  <label className="filter-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={filters.events.Wedding}
+                      onChange={() => handleEventFilterChange('Wedding')}
+                    />
+                    <span className="checkmark"></span>
+                    Wedding
+                  </label>
+                  <label className="filter-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={filters.events.Reception}
+                      onChange={() => handleEventFilterChange('Reception')}
+                    />
+                    <span className="checkmark"></span>
+                    Reception
+                  </label>
+                </div>
+              </div>
+
+              {/* Meal Preference Filter */}
+              <div className="filter-group">
+                <label>Meal Preference</label>
+                <select
+                  value={filters.mealPreference}
+                  onChange={(e) => handleFilterChange('mealPreference', e.target.value)}
+                >
+                  <option value="">All Meal Preferences</option>
+                  <option value="Veg">Veg</option>
+                  <option value="Non-Veg">Non-Veg</option>
+                  <option value="Vegan">Vegan</option>
+                  <option value="No Preference">No Preference</option>
+                </select>
+              </div>
+
+              {/* Travel Method Filter */}
+              <div className="filter-group">
+                <label>Travel Method</label>
+                <select
+                  value={filters.travelMethod}
+                  onChange={(e) => handleFilterChange('travelMethod', e.target.value)}
+                >
+                  <option value="">All Travel Methods</option>
+                  <option value="Car">Car</option>
+                  <option value="Flight">Flight</option>
+                  <option value="Train">Train</option>
+                  <option value="Bus">Bus</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              {/* Guest Count Filter */}
+              <div className="filter-group">
+                <label>Guest Count</label>
+                <select
+                  value={filters.guestCount}
+                  onChange={(e) => handleFilterChange('guestCount', e.target.value)}
+                >
+                  <option value="">All Guest Counts</option>
+                  <option value="1">1 Guest</option>
+                  <option value="2">2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                </select>
+              </div>
+
+              {/* Attending Status Filter */}
+              <div className="filter-group">
+                <label>Attending Status</label>
+                <select
+                  value={filters.attending}
+                  onChange={(e) => handleFilterChange('attending', e.target.value)}
+                >
+                  <option value="">All Responses</option>
+                  <option value="Yes">Attending</option>
+                  <option value="No">Not Attending</option>
+                </select>
+              </div>
+
+              {/* Allergies Filter */}
+              <div className="filter-group">
+                <label>Has Allergies</label>
+                <select
+                  value={filters.hasAllergies}
+                  onChange={(e) => handleFilterChange('hasAllergies', e.target.value)}
+                >
+                  <option value="">All Responses</option>
+                  <option value="Yes">Has Allergies</option>
+                  <option value="No">No Allergies</option>
+                </select>
+              </div>
+
+              {/* Song Request Filter */}
+              <div className="filter-group">
+                <label>Has Song Request</label>
+                <select
+                  value={filters.hasSongRequest}
+                  onChange={(e) => handleFilterChange('hasSongRequest', e.target.value)}
+                >
+                  <option value="">All Responses</option>
+                  <option value="Yes">Has Song Request</option>
+                  <option value="No">No Song Request</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Date Range Filter - Full Width */}
+            <div className="filters-row date-filters">
+              <div className="filter-group date-range-group">
+                <label>Arrival Date Range</label>
+                <div className="date-range">
+                  <input
+                    type="date"
+                    value={filters.arrivalDateFrom}
+                    onChange={(e) => handleFilterChange('arrivalDateFrom', e.target.value)}
+                    placeholder="From Date"
+                  />
+                  <span>to</span>
+                  <input
+                    type="date"
+                    value={filters.arrivalDateTo}
+                    onChange={(e) => handleFilterChange('arrivalDateTo', e.target.value)}
+                    placeholder="To Date"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Filter Results Summary */}
+            <div className="filter-results">
+              <p>
+                Showing <strong>{filteredRsvps.length}</strong> of <strong>{rsvps.length}</strong> RSVPs
+                {filteredRsvps.length !== rsvps.length && (
+                  <span className="filter-active"> (filtered)</span>
+                )}
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="rsvp-table-section">
         <div className="container">
           <motion.div
@@ -140,9 +498,9 @@ const AdminView = () => {
               </button>
             </div>
 
-            {rsvps.length === 0 ? (
+            {filteredRsvps.length === 0 ? (
               <div className="no-data">
-                <p>No RSVP responses yet.</p>
+                <p>{rsvps.length === 0 ? 'No RSVP responses yet.' : 'No RSVPs match the current filters.'}</p>
               </div>
             ) : (
               <div className="table-wrapper">
@@ -165,7 +523,7 @@ const AdminView = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {rsvps.map((rsvp) => (
+                      {filteredRsvps.map((rsvp) => (
                         <tr key={rsvp._id}>
                           <td>{rsvp.fullName}</td>
                           <td>{rsvp.email}</td>

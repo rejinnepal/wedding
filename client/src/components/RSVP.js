@@ -28,7 +28,28 @@ const RSVP = () => {
     setIsSubmitting(true);
     
     try {
-              const response = await axios.post('https://wedding-yec2.onrender.com/api/rsvp', data);
+      // Transform eventsAttending from object to array
+      const eventsArray = [];
+      if (data.eventsAttending) {
+        if (data.eventsAttending.Mehendi) eventsArray.push('Mehendi');
+        if (data.eventsAttending.Wedding) eventsArray.push('Wedding');
+        if (data.eventsAttending.Reception) eventsArray.push('Reception');
+      }
+      
+      // Validate that at least one event is selected
+      if (data.attending === 'Yes' && eventsArray.length === 0) {
+        toast.error('Please select at least one event');
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Create the data object to send
+      const submitData = {
+        ...data,
+        eventsAttending: eventsArray
+      };
+      
+      const response = await axios.post('https://wedding-yec2.onrender.com/api/rsvp', submitData);
       
       toast.success(response.data.message);
       setIsSubmitted(true);
@@ -205,9 +226,7 @@ const RSVP = () => {
                       <input
                         type="checkbox"
                         value="Mehendi"
-                        {...register('eventsAttending', {
-                          required: 'Please select at least one event'
-                        })}
+                        {...register('eventsAttending.Mehendi')}
                       />
                       <span className="checkbox-custom"></span>
                       <span className="checkbox-label">Mehendi (Nov 29, 1-4 PM)</span>
@@ -217,9 +236,7 @@ const RSVP = () => {
                       <input
                         type="checkbox"
                         value="Wedding"
-                        {...register('eventsAttending', {
-                          required: 'Please select at least one event'
-                        })}
+                        {...register('eventsAttending.Wedding')}
                       />
                       <span className="checkbox-custom"></span>
                       <span className="checkbox-label">Wedding Ceremony (Nov 30, 1-4 PM)</span>
@@ -229,9 +246,7 @@ const RSVP = () => {
                       <input
                         type="checkbox"
                         value="Reception"
-                        {...register('eventsAttending', {
-                          required: 'Please select at least one event'
-                        })}
+                        {...register('eventsAttending.Reception')}
                       />
                       <span className="checkbox-custom"></span>
                       <span className="checkbox-label">Reception (Nov 30, 6-11 PM)</span>

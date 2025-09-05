@@ -44,62 +44,55 @@ const Gallery = () => {
     },
     {
       id: 5,
-      src: `${process.env.PUBLIC_URL}/assets/IMG_4556 (1).jpg`,
-      alt: 'Abhishek & Richa - Beautiful Portrait',
-      category: 'engagement',
-      title: 'Beautiful Portrait'
-    },
-    {
-      id: 6,
       src: `${process.env.PUBLIC_URL}/assets/IMG_5114.jpg`,
       alt: 'Abhishek & Richa - Love Story',
       category: 'engagement',
       title: 'Our Love Story'
     },
     {
-      id: 7,
+      id: 6,
       src: `${process.env.PUBLIC_URL}/assets/PXL_20230610_160807595.MP~2.jpeg`,
       alt: 'Abhishek & Richa - Summer 2023',
       category: 'memories',
       title: 'Summer 2023'
     },
     {
-      id: 8,
+      id: 7,
       src: `${process.env.PUBLIC_URL}/assets/PXL_20231221_222540392.MP~2.jpeg`,
       alt: 'Abhishek & Richa - December 2023',
       category: 'memories',
       title: 'December 2023'
     },
     {
-      id: 9,
+      id: 8,
       src: `${process.env.PUBLIC_URL}/assets/PXL_20231226_011616169.jpeg`,
       alt: 'Abhishek & Richa - Holiday Season',
       category: 'memories',
       title: 'Holiday Season'
     },
     {
-      id: 10,
+      id: 9,
       src: `${process.env.PUBLIC_URL}/assets/PXL_20250704_203452695.MP.jpeg`,
       alt: 'Abhishek & Richa - July 2025',
       category: 'engagement',
       title: 'July 2025'
     },
     {
-      id: 11,
+      id: 10,
       src: `${process.env.PUBLIC_URL}/assets/PXL_20250830_182855816.jpeg`,
       alt: 'Abhishek & Richa - August 2025',
       category: 'engagement',
       title: 'August 2025'
     },
     {
-      id: 12,
+      id: 11,
       src: `${process.env.PUBLIC_URL}/assets/QUA58761.jpg`,
       alt: 'Abhishek & Richa - Professional Photo',
       category: 'engagement',
       title: 'Professional Photo'
     },
     {
-      id: 13,
+      id: 12,
       src: `${process.env.PUBLIC_URL}/assets/received_2252639471531614~2.jpeg`,
       alt: 'Abhishek & Richa - Shared Memory',
       category: 'memories',
@@ -230,17 +223,18 @@ const Gallery = () => {
                   alt={selectedImage.alt}
                   className="lightbox-image"
                 />
-                <div className="lightbox-info">
-                  <h3 className="lightbox-title">{selectedImage.title}</h3>
-                  <p className="lightbox-counter">
-                    {currentIndex + 1} of {galleryImages.length}
-                  </p>
-                </div>
               </motion.div>
               
               <button className="lightbox-nav lightbox-next" onClick={nextImage}>
                 ›
               </button>
+              
+              <div className="lightbox-info">
+                <h3 className="lightbox-title">{selectedImage.title}</h3>
+                <p className="lightbox-counter">
+                  {currentIndex + 1} of {galleryImages.length}
+                </p>
+              </div>
             </div>
           </motion.div>
         )}

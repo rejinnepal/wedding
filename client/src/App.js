@@ -9,6 +9,7 @@ import Gallery from './components/Gallery';
 import TravelAccommodation from './components/TravelAccommodation';
 import RSVP from './components/RSVP';
 import AdminView from './components/AdminView';
+import NotFound from './components/NotFound';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/travel-accommodation" element={<TravelAccommodation />} />
           <Route path="/rsvp" element={<RSVP />} />
           <Route path="/admin-view" element={<AdminView />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
     </div>
