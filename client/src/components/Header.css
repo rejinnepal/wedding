@@ -15,7 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.4rem 0;
+  padding: 0.8rem 0;
 }
 
 .logo {
@@ -177,7 +177,7 @@
 
 @media (max-width: 480px) {
   .header-content {
-    padding: 0.4rem 0;
+    padding: 0.5rem 0;
   }
 
   .logo h2 {

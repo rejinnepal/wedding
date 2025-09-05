@@ -9,6 +9,14 @@
   text-align: center;
 }
 
+.rsvp-hero .hero-content {
+  text-align: center !important;
+  margin-left: 0 !important;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
 .hero-content h1 {
   font-size: 4rem;
   margin-bottom: 1rem;

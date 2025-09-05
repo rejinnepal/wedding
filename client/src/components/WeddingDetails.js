@@ -13,22 +13,7 @@ const WeddingDetails = () => {
     <div className="wedding-details">
       {/* Hero Section */}
       <section className="details-hero">
-        <div className="hero-background">
-          <div className="hero-overlay"></div>
-        </div>
         <div className="container">
-          {/* <motion.div
-            className="hero-content"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <h1 className="hero-title">Wedding Details</h1>
-            <p className="hero-subtitle">
-              Everything you need to know about our special day
-            </p>
-            <div className="hero-divider"></div>
-          </motion.div> */}
           <motion.div
             className="hero-content"
             initial={{ opacity: 0, y: 50 }}

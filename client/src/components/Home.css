@@ -28,9 +28,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  filter: brightness(0.7) blur(2px);
-  transform: scale(1.1);
+  object-position: center 80%;
+  filter: blur(1px);
 }
 
 .hero-overlay {
@@ -52,15 +51,16 @@
 .hero-content {
   position: relative;
   z-index: 3;
-  text-align: center;
+  text-align: left;
   max-width: 800px;
   padding: 0 30px;
+  margin-left: -380px;
 }
 
 .main-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 30px;
 }
 
@@ -68,17 +68,20 @@
 .couple-names {
   font-family: var(--font-script);
   font-size: 5rem;
-  color: var(--charcoal);
+  color: #1a1a1a;
   margin: 0;
-  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8);
+  text-shadow: 
+    2px 2px 4px rgba(255, 255, 255, 1),
+    0 0 8px rgba(255, 255, 255, 0.8),
+    0 0 16px rgba(255, 255, 255, 0.6);
   line-height: 1.1;
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: 1px;
 }
 
 /* Wedding Announcement */
 .wedding-announcement {
-  text-align: center;
+  text-align: left;
   margin: 20px 0;
 }
 

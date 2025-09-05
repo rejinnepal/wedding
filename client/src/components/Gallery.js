@@ -132,7 +132,7 @@ const Gallery = () => {
     <div className="gallery">
       {/* Header Section */}
       <section className="gallery-header">
-        <motion.div 
+        {/* <motion.div 
           className="header-content"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -142,7 +142,18 @@ const Gallery = () => {
           <p className="gallery-subtitle">
             Capturing moments of love, laughter, and joy as we prepare for our special day
           </p>
-        </motion.div>
+        </motion.div> */}
+        <motion.div
+            className="hero-content"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <h1>Our Gallery</h1>
+            <p className="hero-subtitle">
+              Capturing moments of love, laughter, and joy as we prepare for our special day
+            </p>
+          </motion.div>
       </section>
 
       {/* Gallery Grid */}
