@@ -359,7 +359,7 @@ const RSVP = () => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <label htmlFor="arrivalDate">Date of Arrival *</label>
+                  <label htmlFor="arrivalDate">Intended Date of Arrival *</label>
                   <input
                     type="date"
                     id="arrivalDate"
@@ -382,7 +382,7 @@ const RSVP = () => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <label htmlFor="departureDate">Date of Departure *</label>
+                  <label htmlFor="departureDate">Intended Date of Departure *</label>
                   <input
                     type="date"
                     id="departureDate"
@@ -427,7 +427,7 @@ const RSVP = () => {
               )}
 
               <div className="form-group">
-                <label htmlFor="songRequest">Song request or message for the couple (optional)</label>
+                <label htmlFor="songRequest">Song request or message for the couple</label>
                 <textarea
                   id="songRequest"
                   {...register('songRequest', {
@@ -446,7 +446,7 @@ const RSVP = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="allergies">Any allergies or special needs? (optional)</label>
+                <label htmlFor="allergies">Any allergies or special needs (Optional)?</label>
                 <textarea
                   id="allergies"
                   {...register('allergies', {
