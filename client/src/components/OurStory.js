@@ -111,7 +111,11 @@ const OurStory = () => {
               >
                 <div className="timeline-content">
                   <div className="timeline-image">
-                    <img src={event.image} alt={event.title} />
+                    <img 
+                      src={event.image} 
+                      alt={event.title} 
+                      className={event.id === 5 ? 'our-family-image' : ''}
+                    />
                   </div>
                   <div className="timeline-text">
                     <div className="timeline-date">{event.date}</div>

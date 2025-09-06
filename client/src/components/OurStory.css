@@ -47,17 +47,7 @@
   margin: 0 auto;
 }
 
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(135deg, var(--dusty-rose), var(--gold));
-  transform: translateX(-50%);
-  border-radius: 2px;
-}
+/* Timeline vertical line removed */
 
 .timeline-item {
   position: relative;
@@ -112,6 +102,11 @@
   transition: var(--transition);
 }
 
+/* Special positioning for Our Little Family photo */
+.our-family-image {
+  object-position: center 90%;
+}
+
 .timeline-content:hover .timeline-image img {
   transform: scale(1.1);
 }
@@ -142,28 +137,7 @@
   margin: 0;
 }
 
-.timeline-marker {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-
-.marker-dot {
-  width: 20px;
-  height: 20px;
-  background: var(--white);
-  border: 4px solid var(--dusty-rose);
-  border-radius: 50%;
-  box-shadow: 0 0 0 8px rgba(212, 165, 116, 0.1);
-  transition: var(--transition);
-}
-
-.timeline-item:hover .marker-dot {
-  background: var(--dusty-rose);
-  box-shadow: 0 0 0 12px rgba(212, 165, 116, 0.2);
-}
+/* Timeline markers removed */
 
 /* Story Footer */
 .story-footer {
@@ -240,9 +214,7 @@
     font-size: 1.1rem;
   }
 
-  .timeline::before {
-    left: 30px;
-  }
+  /* Timeline vertical line removed for mobile */
 
   .timeline-item.left .timeline-content,
   .timeline-item.right .timeline-content {
@@ -267,9 +239,7 @@
     font-size: 1.5rem;
   }
 
-  .timeline-marker {
-    left: 30px;
-  }
+  /* Timeline markers removed for mobile */
 
   .footer-content h2 {
     font-size: 2rem;
@@ -325,15 +295,7 @@
     font-size: 1.3rem;
   }
 
-  .timeline-marker {
-    left: 25px;
-  }
-
-  .marker-dot {
-    width: 16px;
-    height: 16px;
-    border-width: 3px;
-  }
+  /* Timeline markers removed for small mobile */
 
   .story-footer {
     padding: 60px 0;

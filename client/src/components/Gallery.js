@@ -370,7 +370,7 @@ const Gallery = () => {
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="gallery-image"
+                    className={`gallery-image ${image.id === 31 ? 'family-copy-image' : ''} ${image.id === 39 ? 'shared-memory-image' : ''}`}
                     loading="lazy"
                   />
                   <div className="image-overlay">
