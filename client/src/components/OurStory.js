@@ -36,21 +36,21 @@ const OurStory = () => {
       date: '2022-2025',
       title: 'Adventures Together',
       description: 'Since then, life has been a new adventure. Our first trip was to Niagara Falls, a place that will forever symbolize our first chapter living together. Soon after, we discovered our love for the outdoors and became "National Park junkies," traveling to six parks so far with many more to come.',
-      image: `${process.env.PUBLIC_URL}/assets/PXL_20230610_160807595.MP~2.jpeg`
+      image: `${process.env.PUBLIC_URL}/assets/IMG_4556_adventure.jpg`
     },
     {
       id: 5,
       date: 'October 2022 & April 2025',
       title: 'Our Little Family',
       description: 'Our little family grew too — with Luna, our sweet girl, in October 2022, and Mango, our playful boy, in April 2025. They\'ve filled our lives with laughter, warmth, and love.',
-      image: `${process.env.PUBLIC_URL}/assets/PXL_20231221_222540392.MP~2.jpeg`
+      image: `${process.env.PUBLIC_URL}/assets/IMG_6893_Original.JPG`
     },
     {
       id: 6,
       date: 'November 30, 2025',
       title: 'Our Wedding Day',
       description: 'Through every chapter — graduations, careers, adventures, challenges — the greatest gift has been each other. From high school sweethearts to life partners, we are endlessly grateful to have found love so early, to have grown together, and to continue writing this story hand in hand.',
-      image: `${process.env.PUBLIC_URL}/assets/PXL_20250830_182855816.jpeg`
+      image: `${process.env.PUBLIC_URL}/assets/541250715_1883148642542957_5023874615548922619_n.jpg`
     }
   ];
 
