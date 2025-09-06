@@ -65,6 +65,8 @@ const RSVP = () => {
       
       if (error.response?.data?.message) {
         toast.error(error.response.data.message);
+      } else if (error.code === 'ECONNABORTED' || error.message.includes('timeout')) {
+        toast.error('The server is waking up. Please wait a moment and try again.');
       } else {
         toast.error('Something went wrong. Please try again.');
       }
@@ -119,6 +121,14 @@ const RSVP = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
+            {/* Info box about server wake-up time */}
+            <div className="rsvp-info-box">
+              <div className="info-icon">ℹ️</div>
+              <div className="info-content">
+                <p><strong>Note:</strong> If the form takes a moment to submit, our server might be waking up. Please be patient and try again if needed.</p>
+              </div>
+            </div>
+
             <form onSubmit={handleSubmit(onSubmit)} className="rsvp-form">
               <div className="form-group">
                 <label htmlFor="fullName">Full Name *</label>

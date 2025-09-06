@@ -45,6 +45,35 @@
   margin: 0 auto;
 }
 
+/* RSVP Info Box */
+.rsvp-info-box {
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(255, 215, 0, 0.1));
+  border: 1px solid rgba(212, 165, 116, 0.3);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.info-icon {
+  font-size: 1.2rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.info-content p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.info-content strong {
+  color: var(--dusty-rose);
+}
+
 .rsvp-form {
   background: rgba(255, 255, 255, 0.95);
   padding: 3rem;
