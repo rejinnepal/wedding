@@ -47,6 +47,14 @@ const rsvpSchema = new mongoose.Schema({
       return this.attending === 'Yes';
     }
   },
+  plusOneName: {
+    type: String,
+    trim: true,
+    maxlength: [100, 'Plus one name cannot be more than 100 characters'],
+    required: function() {
+      return this.numberOfGuests === 2;
+    }
+  },
   mealPreference: {
     type: String,
     enum: ['Veg', 'Non-Veg', 'Vegan', 'No Preference'],

@@ -34,6 +34,11 @@ const validateRSVP = [
     .if(body('attending').equals('Yes'))
     .isInt({ min: 1, max: 5 })
     .withMessage('Number of guests must be between 1 and 5'),
+  body('plusOneName')
+    .optional()
+    .trim()
+    .isLength({ min: 2, max: 100 })
+    .withMessage('Plus one name must be between 2 and 100 characters'),
   body('mealPreference')
     .if(body('attending').equals('Yes'))
     .isIn(['Veg', 'Non-Veg', 'Vegan', 'No Preference'])
@@ -81,7 +86,8 @@ router.post('/', validateRSVP, async (req, res) => {
       phoneNumber, 
       attending, 
       eventsAttending,
-      numberOfGuests, 
+      numberOfGuests,
+      plusOneName,
       mealPreference, 
       arrivalDate, 
       departureDate, 
@@ -113,6 +119,7 @@ router.post('/', validateRSVP, async (req, res) => {
     if (attending === 'Yes') {
       rsvpData.eventsAttending = eventsAttending;
       rsvpData.numberOfGuests = numberOfGuests;
+      rsvpData.plusOneName = plusOneName;
       rsvpData.mealPreference = mealPreference;
       rsvpData.arrivalDate = arrivalDate;
       rsvpData.departureDate = departureDate;

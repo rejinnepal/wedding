@@ -239,6 +239,23 @@
   width: 100%;
 }
 
+.rsvp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.rsvp-link {
+  color: var(--dusty-rose);
+  font-weight: 600;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.rsvp-card:hover .rsvp-link {
+  color: var(--gold);
+}
+
 .info-card {
   background: rgba(255, 255, 255, 0.95);
   padding: 50px 40px;

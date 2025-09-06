@@ -145,7 +145,7 @@ const WeddingDetails = () => {
                   <div className="detail-icon">🍽️</div>
                   <div className="detail-content">
                     <h3>Dinner</h3>
-                    <p>Traditional Nepali dinner service begins at 7:00 PM</p>
+                    <p>Cocktails start at 6:00 PM, Dinner service begins at 7:30 PM</p>
                   </div>
                 </div>
               </div>
@@ -290,22 +290,29 @@ const WeddingDetails = () => {
                 <div className="timeline-item">
                   <div className="timeline-time">6:00 PM</div>
                   <div className="timeline-event">
-                    <h4>Reception Begins</h4>
-                    <p>Cocktails and celebration start at Hilton Garden Inn</p>
+                    <h4>Reception Starts</h4>
+                    <p>Reception begins at Hilton Garden Inn</p>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <div className="timeline-time">6:00 PM</div>
+                  <div className="timeline-event">
+                    <h4>Cocktail</h4>
+                    <p>Cocktail hour begins</p>
                   </div>
                 </div>
                 <div className="timeline-item">
                   <div className="timeline-time">7:00 PM</div>
                   <div className="timeline-event">
-                    <h4>Dinner Service</h4>
-                    <p>Traditional Nepali dinner begins</p>
+                    <h4>First Dance</h4>
+                    <p>Abhishek & Richa's first dance</p>
                   </div>
                 </div>
                 <div className="timeline-item">
-                  <div className="timeline-time">8:30 PM</div>
+                  <div className="timeline-time">7:30 PM</div>
                   <div className="timeline-event">
-                    <h4>First Dance</h4>
-                    <p>Abhishek & Richa's first dance</p>
+                    <h4>Dinner Starts</h4>
+                    <p>Dinner service begins</p>
                   </div>
                 </div>
                 <div className="timeline-item">

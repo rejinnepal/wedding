@@ -152,7 +152,7 @@ const Home = () => {
           
           {/* RSVP Card - Full Width */}
           <div className="rsvp-row">
-            <div className="info-card rsvp-card">
+            <div className="info-card rsvp-card" onClick={() => navigate('/rsvp')} style={{ cursor: 'pointer' }}>
               <div className="card-icon">💝</div>
               <h3>RSVP</h3>
               <p>Please respond by</p>

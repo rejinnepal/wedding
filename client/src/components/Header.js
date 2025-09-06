@@ -50,7 +50,8 @@ const Header = () => {
                   <Link
                     to={item.path}
                     className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
-                    onClick={() => {
+                    onClick={(e) => {
+                      console.log('Navigation clicked:', item.path, item.label);
                       setIsMobileMenuOpen(false);
                       scrollToTop();
                     }}

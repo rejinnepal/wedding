@@ -508,6 +508,7 @@ const AdminView = () => {
                                       <thead>
                       <tr>
                         <th>Name</th>
+                        <th>+1 Name</th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Attending</th>
@@ -526,6 +527,7 @@ const AdminView = () => {
                       {filteredRsvps.map((rsvp) => (
                         <tr key={rsvp._id}>
                           <td>{rsvp.fullName}</td>
+                          <td>{rsvp.plusOneName || '-'}</td>
                           <td>{rsvp.email}</td>
                           <td>{rsvp.phoneNumber}</td>
                           <td>

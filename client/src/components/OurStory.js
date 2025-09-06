@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useNavigate } from 'react-router-dom';
 import './OurStory.css';
 
 const OurStory = () => {
+  const navigate = useNavigate();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -35,7 +37,7 @@ const OurStory = () => {
       id: 4,
       date: '2022-2025',
       title: 'Adventures Together',
-      description: 'Since then, life has been a new adventure. Our first trip was to Niagara Falls, a place that will forever symbolize our first chapter living together. Soon after, we discovered our love for the outdoors and became "National Park junkies," traveling to six parks so far with many more to come.',
+      description: 'Since then, life has been a new adventure. We began exploring many of New York\'s beautiful state parks, with Letchworth State Park quickly becoming our special place. Our love for the outdoors has only deepened over the years, taking us from winding trails close to home to breathtaking landscapes across the country. So far, we\'ve explored six national parks together — each one marking another chapter in our story, with countless more adventures waiting ahead.',
       image: `${process.env.PUBLIC_URL}/assets/IMG_4556_adventure.jpg`
     },
     {
@@ -140,6 +142,17 @@ const OurStory = () => {
               to create many more beautiful memories as husband and wife. Thank you 
               for being part of our journey and for celebrating this special day with us.
             </p>
+            <motion.button 
+              className="rsvp-button"
+              onClick={() => navigate('/rsvp')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              RSVP Now
+            </motion.button>
             <div className="love-quote">
               <p>"Love is not about finding the perfect person, but about seeing an imperfect person perfectly."</p>
               <span>- Sam Keen</span>

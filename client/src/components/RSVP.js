@@ -23,6 +23,7 @@ const RSVP = () => {
   } = useForm();
 
   const attending = watch('attending');
+  const numberOfGuests = watch('numberOfGuests');
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
@@ -276,23 +277,48 @@ const RSVP = () => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <label htmlFor="numberOfGuests">How many people (including you) are attending? *</label>
+                  <label htmlFor="numberOfGuests">Will you be celebrating with us +1? *</label>
                   <select
                     id="numberOfGuests"
                     {...register('numberOfGuests', {
-                      required: 'Please select number of guests'
+                      required: 'Please select an option'
                     })}
                     className={errors.numberOfGuests ? 'error' : ''}
                   >
-                    <option value="">Select number of guests</option>
-                    <option value="1">1 Guest</option>
-                    <option value="2">2 Guests</option>
-                    <option value="3">3 Guests</option>
-                    <option value="4">4 Guests</option>
-                    <option value="5">5 Guests</option>
+                    <option value="">Select an option</option>
+                    <option value="1">Just me</option>
+                    <option value="2">+1</option>
                   </select>
                   {errors.numberOfGuests && (
                     <span className="error-message">{errors.numberOfGuests.message}</span>
+                  )}
+                </motion.div>
+              )}
+
+              {attending === 'Yes' && numberOfGuests === '2' && (
+                <motion.div
+                  className="form-group"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <label htmlFor="plusOneName">Name of your +1 *</label>
+                  <input
+                    type="text"
+                    id="plusOneName"
+                    {...register('plusOneName', {
+                      required: numberOfGuests === '2' ? 'Please enter the name of your +1' : false,
+                      minLength: {
+                        value: 2,
+                        message: 'Name must be at least 2 characters'
+                      }
+                    })}
+                    className={errors.plusOneName ? 'error' : ''}
+                    placeholder="Enter your +1's full name"
+                  />
+                  {errors.plusOneName && (
+                    <span className="error-message">{errors.plusOneName.message}</span>
                   )}
                 </motion.div>
               )}
