@@ -414,20 +414,31 @@
   .lightbox-content {
     max-width: 95vw;
     max-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .lightbox-nav {
     width: 45px;
     height: 45px;
     font-size: 1.8rem;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    margin: 10px auto;
   }
   
   .lightbox-prev {
-    left: -50px;
+    left: auto;
+    margin-bottom: 10px;
   }
   
   .lightbox-next {
-    right: -50px;
+    right: auto;
+    margin-top: 10px;
   }
   
   .lightbox-close {
