@@ -372,6 +372,13 @@ const Gallery = () => {
                     alt={image.alt}
                     className={`gallery-image ${image.id === 31 ? 'family-copy-image' : ''} ${image.id === 39 ? 'shared-memory-image' : ''}`}
                     loading="lazy"
+                    onError={(e) => {
+                      console.error('Image failed to load:', image.src);
+                      e.target.style.display = 'none';
+                    }}
+                    onLoad={() => {
+                      console.log('Image loaded successfully:', image.src);
+                    }}
                   />
                   <div className="image-overlay">
                     <div className="overlay-content">

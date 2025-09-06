@@ -337,9 +337,17 @@
   }
   
   .gallery-grid {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: 200px;
     gap: 20px;
+    grid-auto-flow: row dense;
+  }
+  
+  .gallery-item {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
   
   .gallery-item:nth-child(3n+1),
@@ -387,9 +395,17 @@
   }
   
   .gallery-grid {
+    display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: 250px;
     gap: 15px;
+    grid-auto-flow: row dense;
+  }
+  
+  .gallery-item {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
   
   .gallery-item:nth-child(3n+1),
