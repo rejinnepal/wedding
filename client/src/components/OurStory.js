@@ -157,10 +157,6 @@ const OurStory = () => {
             >
               RSVP Now
             </motion.button>
-            <div className="love-quote">
-              <p>"Love is not about finding the perfect person, but about seeing an imperfect person perfectly."</p>
-              <span>- Sam Keen</span>
-            </div>
           </motion.div>
         </div>
       </section>

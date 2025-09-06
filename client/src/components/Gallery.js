@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import './Gallery.css';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
 
   // Gallery images - All your beautiful photos
   const galleryImages = [
@@ -276,9 +270,9 @@ const Gallery = () => {
     {
       id: 38,
       src: `${process.env.PUBLIC_URL}/assets/QUA58761.jpg`,
-      alt: 'Abhishek & Richa - Professional Photo',
+      alt: 'Abhishek & Richa - PhD Ceremony',
       category: 'engagement',
-      title: 'Professional Photo'
+      title: 'PhD Ceremony'
     },
     {
       id: 39,
@@ -317,6 +311,7 @@ const Gallery = () => {
     if (e.key === 'ArrowLeft') prevImage();
   };
 
+  
   return (
     <div className="gallery">
       {/* Header Section */}
@@ -349,9 +344,8 @@ const Gallery = () => {
       <section className="gallery-section">
         <motion.div 
           className="gallery-container"
-          ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="gallery-grid">
@@ -360,8 +354,8 @@ const Gallery = () => {
                 key={image.id}
                 className="gallery-item"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
                 onClick={() => openLightbox(image, index)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
